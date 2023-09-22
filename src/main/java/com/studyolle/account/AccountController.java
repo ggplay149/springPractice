@@ -61,9 +61,6 @@ public class AccountController {
         }
 
         accountService.completeSignUp(account);
-
-        account.completeSignUp();
-        accountService.login(account);
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
         return view;
@@ -88,15 +85,15 @@ public class AccountController {
     }
 
     @GetMapping("/profile/{nickname}")
-    public String viewProfile(@PathVariable String nickname, Model model, @CurrentUser Account account){
+    public String viewProfile(@PathVariable String nickname, Model model, @CurrentUser Account account) {
         Account byNickname = accountRepository.findByNickname(nickname);
-        if(nickname==null){
-            throw  new IllegalArgumentException(nickname+"에 해당하는 사용자가 없습니다.");
+        if (nickname == null) {
+            throw new IllegalArgumentException(nickname + "에 해당하는 사용자가 없습니다.");
         }
 
-        model.addAttribute(byNickname); //이름을 지정하지않으면 그 형태이름으로 감
-        model.addAttribute("isOwner",byNickname.equals(account));
+        model.addAttribute(byNickname);
+        model.addAttribute("isOwner", byNickname.equals(account));
         return "account/profile";
-
     }
+
 }
