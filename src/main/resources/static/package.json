@@ -9,9 +9,11 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.6.2",
+    "cropper": "^4.1.0",
     "font-awesome": "^4.7.0",
     "jdenticon": "^2.2.0",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "jquery-cropper": "^1.0.1"
   },
   "description": ""
 }
